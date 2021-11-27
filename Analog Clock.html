@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <title>Analog & Digital clock</title>
+      <link rel="stylesheet" href="style1.css">
+   </head>
+   <body>
+
+    
+
+      <div class="myclock" >
+
+        <!--Inline css USe kelel hyat aani html code ekach div maddhe save kel 
+
+          mhnje mla te output one line mddhe anayla easy gel 
+
+          script aapn code mddhe kuth bi lihu shkto tr matter nahi krt tyach kahi 
+
+          simple margine set kel 
+
+         -->
+
+       <div class="wrapper" style="margin-top: 50%;  ">
+         <div class="display" style="margin-top: 50%;">
+            <div id="time" ></div>
+         </div>
+         <span style="margin-top: 50%;  background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0); "></span>
+         <span style="margin-top: 50%; "></span>
+      </div>
+
+
+      <div class="clock" style="margin-left: 40%; border: 3px solid red;">
+         <div class="center-nut"></div>
+         <div class="center-nut2"></div>
+         <div class="indicators">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+         </div>
+         <div class="sec-hand">
+            <div class="sec"></div>
+         </div>
+         <div class="min-hand">
+            <div class="min"></div>
+         </div>
+         <div class="hr-hand">
+            <div class="hr"></div>
+         </div>
+
+
+      </div>
+
+    </div>
+
+
+      <script>
+         const sec = document.querySelector(".sec");
+         const min = document.querySelector(".min");
+         const hr = document.querySelector(".hr");
+         setInterval(function(){
+           let time  = new Date();
+           let secs = time.getSeconds() * 6;
+           let mins = time.getMinutes() * 6;
+           let hrs = time.getHours() * 30;
+           sec.style.transform = `rotateZ(${secs}deg)`;
+           min.style.transform = `rotateZ(${mins}deg)`;
+           hr.style.transform = `rotateZ(${hrs+(mins/12)}deg)`;
+         });
+      </script>
+
+
+      
+      <script>
+         setInterval(()=>{
+           const time = document.querySelector(".display #time");
+           let date = new Date();
+           let hours = date.getHours();
+           let minutes = date.getMinutes();
+           let seconds = date.getSeconds();
+           let day_night = "AM";
+           if(hours > 12){
+             day_night = "PM";
+             hours = hours - 12;
+           }
+           if(seconds < 10){
+             seconds = "0" + seconds;
+           }
+           if(minutes < 10){
+             minutes = "0" + minutes;
+           }
+           if(hours < 10){
+             hours = "0" + hours;
+           }
+           time.textContent = hours + ":" + minutes + ":" + seconds + " "+ day_night;
+         });
+      </script>
+
+   
+   </body>
+</html>
+
+
+
